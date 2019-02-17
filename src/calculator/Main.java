@@ -17,6 +17,7 @@ public class Main {
                     "--------------------------------\n" +
                     "Input your arithmetic operations in a single expression:");
             str = scan.nextLine();
+            str = str.replaceAll("\\s+", "");
             str = str.toUpperCase();
             switch (str) {
                 case "FAQ":
@@ -49,7 +50,6 @@ public class Main {
 
         if (entStr.isEmpty()) return "ERROR: Your expression is empty !!!";
         if (entStr.contains("/0")) return "ERROR: Dividing by zero !!!";
-        if (entStr.contains(" ")) return "ERROR: You entered a space character !!!";
         if (entStr.contains(",")) return "ERROR: Use a character '.' instead ',' !!!";
 
         if ((entStr.matches("\\(?[-]?[1-9].*?") || entStr.matches("\\(?(-0\\.)?[0-9].*?")) && entStr.matches(".*?([0-9]|\\))")) {
@@ -97,7 +97,7 @@ public class Main {
             if (entStr.charAt(i) == '(') brackets += 1;
             if (entStr.charAt(i) == ')') brackets -= 1;
             if (entStr.substring(i, i + 1).matches("[+\\-/*.]")) {
-                operators  += 1;
+                operators += 1;
             } else {
                 operators = 0;
             }
