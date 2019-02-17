@@ -13,19 +13,19 @@ public class Main {
         while (true) {
             System.out.println("========== CALCULATOR ==========\n" +
                     "Input 'faq' to show instruction.\n" +
-                    "Input 'ex' to exit.");
-            System.out.println("--------------------------------");
-            System.out.println("Input your arithmetic operations in a single expression:");
+                    "Input 'ex' to exit.\n" +
+                    "--------------------------------\n" +
+                    "Input your arithmetic operations in a single expression:");
             str = scan.nextLine();
+            str = str.toUpperCase();
             switch (str) {
-                case "faq":
+                case "FAQ":
                     showInstruction();
                     break;
-                case "ex":
+                case "EX":
                     System.out.println("Goodbye !!!");
                     return;
                 default:
-                    str = str.toUpperCase();
                     str = validation(str);
                     System.out.println("--------------------------------");
                     if (!str.contains("ERROR")) str = calculate(str);
@@ -94,10 +94,10 @@ public class Main {
         }
 
         for (int i = 0; i < entStr.length(); i++) {
-            if (entStr.charAt(i) == '(') brackets = brackets + 1;
-            if (entStr.charAt(i) == ')') brackets = brackets - 1;
+            if (entStr.charAt(i) == '(') brackets += 1;
+            if (entStr.charAt(i) == ')') brackets -= 1;
             if (entStr.substring(i, i + 1).matches("[+\\-/*.]")) {
-                operators = operators + 1;
+                operators  += 1;
             } else {
                 operators = 0;
             }
