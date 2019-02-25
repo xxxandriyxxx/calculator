@@ -11,7 +11,6 @@ public class Calculator {
 
 
     public static void start() {
-
         Scanner scan = new Scanner(System.in);
         String str = "";
         while (true) {
