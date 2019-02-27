@@ -1,7 +1,7 @@
 =================================== INSTRUCTION ===================================
 Application can perform basic math operations such as: addition, subtraction,
 multiplication and division.
-You can use either Arabic or Roman numerals.
+You can use either Arabic or Roman numbers.
 -----------------------------------------------------------------------------------
 If you use ARABIC numbers:
 - there are such number types you can use: integers, decimal or even fractions;

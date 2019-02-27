@@ -243,7 +243,7 @@ public class Calculator {
         System.out.println("=================================== INSTRUCTION ===================================\n" +
                 "Application can perform basic math operations such as: addition, subtraction,\n" +
                 "multiplication and division.\n" +
-                "You can use either Arabic or Roman numerals.\n" +
+                "You can use either Arabic or Roman numbers.\n" +
                 "-----------------------------------------------------------------------------------\n" +
                 "If you use ARABIC numbers:\n" +
                 "- there are such number types you can use: integers, decimal or even fractions;\n" +
