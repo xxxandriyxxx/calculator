@@ -55,7 +55,7 @@ public class Calculator {
         if (entStr.contains("/0")) return "ERROR: Dividing by zero !!!";
         if (entStr.contains(",")) return "ERROR: Use a character '.' instead ',' !!!";
 
-        if ((entStr.matches("\\(?[-]?[1-9].*?") || entStr.matches("\\(?(-0\\.)?[0-9].*?")) && entStr.matches(".*?([0-9]|\\))")) {
+        if (entStr.matches("\\(?[-]?[0-9].*?") && entStr.matches(".*?([0-9]|\\))")) {
             if (!Pattern.compile("[^+\\-/*().\\d]").matcher(entStr).find()) type = "arabic";
         }
         if (entStr.matches("\\(?[-]?[IVXLCDM].*?") && entStr.matches(".*?([IVXLCDM]|\\))")) {
@@ -97,8 +97,8 @@ public class Calculator {
         }
 
         for (int i = 0; i < entStr.length(); i++) {
-            if (entStr.charAt(i) == '(') brackets ++;
-            if (entStr.charAt(i) == ')') brackets --;
+            if (entStr.charAt(i) == '(') brackets++;
+            if (entStr.charAt(i) == ')') brackets--;
             if (entStr.substring(i, i + 1).matches("[+\\-/*.]")) {
                 operators += 1;
             } else {
@@ -109,7 +109,7 @@ public class Calculator {
         }
         if (brackets != 0) return "ERROR: Сheck your brackets !!!";
 
-        Pattern pat = Pattern.compile("(\\(\\+)|(\\(\\*)|(\\(\\/)|(\\(\\))|(\\+\\))|(\\-\\))|(\\*\\))|(\\/\\))|(\\)\\d)|(\\d\\()|(\\(\\-0[^\\.])");
+        Pattern pat = Pattern.compile("(\\([+*/])|([+\\-*/]\\))|(\\d\\()|(\\)\\d)");
         Matcher mat = pat.matcher(entStr);
         if (mat.find()) return "ERROR: Сheck your brackets and operators !!!";
 
@@ -250,17 +250,20 @@ public class Calculator {
                 "- the expression should start with zero, open bracket, positive or negative number;\n" +
                 "- expression in brackets should start with a positive, negative number or zero.\n" +
                 "------- Examples of CORRECT expressions:\n" +
-                "-2*8\n" +
-                "12/(-3)\n" +
                 "0+8*4\n" +
                 "(2+2)*2\n" +
+                "-2*8\n" +
+                "-002*8\n" +
+                "12/(-3)\n" +
                 "-0.25+6\n" +
                 "(-0.25+6)*(-10-2)\n" +
-                "------- Examples of INCORRECT expressions:\n" +
-                "12/-3\n" +
                 "-0+8*4\n" +
                 "(-0+8)*4\n" +
                 "2+(-0+8)*4\n" +
+                "6+0.00+4\n" +
+                "6+(-0.00000+4)\n" +
+                "------- Examples of INCORRECT expressions:\n" +
+                "12/-3\n" +
                 "(0+9))+(9-8)5+(*8+)-6(9+)-\n" +
                 "-----------------------------------------------------------------------------------\n" +
                 "If you use ROMAN numbers:\n" +
